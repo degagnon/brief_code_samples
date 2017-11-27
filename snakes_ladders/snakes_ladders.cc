@@ -34,9 +34,12 @@ void AddHop(std::vector<std::vector<int>>& graph, int node1, int node2) {
 
   // Replace any edges pointing to the start node
   // with edges that point to the end node.
-  // The method here has O(n^2) complexity for every AddEdge call,
+  // The method here has O(n*m) complexity for every AddHop call,
+  // where n = number of squares and m = potential moves per turn,
   // which could be problematic on large boards but is tolerable
   // for tests of the scale given in the problem description.
+  // For this problem, n = 100 for a 100-square board,
+  // and m = 6 for a 6-sided die.
   for (size_t i = 1; i <= 100; ++i) {
     for (size_t j = 0; j < graph[i].size(); ++j) {
       if (graph[i][j] == node1) {
